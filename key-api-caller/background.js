@@ -13,13 +13,14 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
             }
         })
             .then(response => {
-                console.log(response.headers.get('x-api-request-id'));
-                // for (let entry of response.headers.entries()) {
-                //     console.log(entry);
-                // }
+                const request_id = response.headers.get('x-api-request-id');
+                chrome.storage.local.set({ 'requestID': request_id }, function () {
+                    console.log('New Request ID stored:', request_id);
+                });
             })
             .catch(error => {
-                console.error("error")
+                console.error(error)
             });
     }
+
 });

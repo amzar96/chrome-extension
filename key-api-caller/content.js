@@ -9,3 +9,12 @@ document.addEventListener('submit', function (event) {
         });
     }
 });
+
+
+chrome.storage.local.get('requestID', function (result) {
+    const storedRequestID = result.requestID;
+    if (storedRequestID) {
+        const requestIDPlaceholder = document.getElementById('request-id');
+        requestIDPlaceholder.innerText = storedRequestID;
+    }
+});
