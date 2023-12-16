@@ -1,0 +1,25 @@
+{
+    "version": "1.0",
+    "manifest_version": 3,
+    "name": "Key Caller",
+    "permissions": [
+        "tabs",
+        "activeTab"
+    ],
+    "content_scripts": [
+        {
+            "matches": [
+                "https://mazipan.github.io/login-page-css/*"
+            ],
+            "js": [
+                "content.js"
+            ]
+        }
+    ],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "action": {
+        "default_popup": "popup.html"
+    }
+}
